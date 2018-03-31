@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group_plant">
+        <item android:title="@string/Menu">
+            <menu>
+                <group android:checkableBehavior="single">
+                    <item
+                        android:id="@+id/nav_weather"
+                        android:icon="@drawable/weather"
+                        android:title="@string/Weather" />
+
+                    <item
+                        android:id="@+id/nav_water"
+                        android:icon="@drawable/water"
+                        android:title="@string/Irrigation" />
+                    <item
+                        android:id="@+id/nav_Wauto"
+                        android:icon="@drawable/irrigation2"
+                        android:title="@string/AutoIrrigation" />
+                    <item
+                        android:id="@+id/nav_fertilizer"
+                        android:icon="@drawable/ferlilizer"
+                        android:title="@string/Fertilization" />
+                    <item
+                        android:id="@+id/nav_time"
+                        android:icon="@drawable/timer"
+                        android:title="@string/AutoFertilization" />
+
+                </group>
+            </menu>
+        </item>
+    </group>
+    <item android:title="@string/Settings">
+    <menu>
+        <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/setting"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/Settings" />
+        </group>
+    </menu>
+    </item>
+</menu>

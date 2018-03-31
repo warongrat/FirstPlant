@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1093517461022",
+    "firebase_url": "https://firstplant-project.firebaseio.com",
+    "project_id": "firstplant-project",
+    "storage_bucket": "firstplant-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1093517461022:android:be8a4278ec12d39f",
+        "android_client_info": {
+          "package_name": "project.firstplant"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1093517461022-cnr4e17v634jqharbj42ds6h9linjf9p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "project.firstplant",
+            "certificate_hash": "2dcf4184784e9ddbc5a992a37fcb7cccdbdc82fd"
+          }
+        },
+        {
+          "client_id": "1093517461022-2t3n2sjna7ebbuej8s8bj31g9b099cbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1aa17hWpipbTxaxXtSqTYhdxmeVQ4fzQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1093517461022-2t3n2sjna7ebbuej8s8bj31g9b099cbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
