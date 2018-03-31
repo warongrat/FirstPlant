@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
@@ -35,6 +36,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import project.firstplant.Service.ServiceUtils;
 import project.firstplant.data.FriendDB;
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         builder.setSmallIcon(R.drawable.icon_small)
                 .setAutoCancel(true)
-                .setContentTitle("Welcome")
+                .setContentTitle(getString(R.string.Welcome))
                 .setContentText("First App First Plant")
                 .setContentIntent(pendingIntent)
                 .setVibrate(new long[]{Notification.DEFAULT_VIBRATE})
@@ -175,6 +177,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             fragmentTransaction.replace(R.id.mainFrame, fragment).commit();
             return true;
         }*/
+        if (id == R.id.action_lan) {
+            Locale current = getResources().getConfiguration().locale;
+            Configuration config = new Configuration();
+            if (current.equals(new Locale("th")))
+                config.locale = Locale.ENGLISH;
+            else
+                config.locale = new Locale("th");
+            getResources().updateConfiguration(config, null);
+            FragmentManager fm = getSupportFragmentManager();
+            for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
+                fm.popBackStack();
+            }
+            finish();
+            startActivity(getIntent());
+        }
         if (id == R.id.action_signout) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
             alertDialogBuilder.setTitle("Sure..!!!");
@@ -252,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                 editor.putString("IDC", value);
                                 editor.commit();
                                 Tset.setText(getResources().getString(R.string.Current_ID) + " : " + prefs.getString("IDC", ""));
-                                Tfarm.setText(getResources().getString(R.string.Current_Farm)+ " : " + prefs.getString("Farm", ""));
+                                Tfarm.setText(getResources().getString(R.string.Current_Farm) + " : " + prefs.getString("Farm", ""));
                                 dialog.dismiss();
                             }
 

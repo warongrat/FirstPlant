@@ -71,5 +71,6 @@
     <string name="Controller_ID">ไอดีบอร์ดควบคุม</string>
     <string name="Edit">แก้ไข</string>
     <string name="Farm">ชื่อสวน</string>
+    <string name="Language">เปลี่ยนภาษา</string>
 
 </resources>

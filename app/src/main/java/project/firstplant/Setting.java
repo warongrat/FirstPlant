@@ -3,7 +3,6 @@ package project.firstplant;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
@@ -28,7 +27,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import project.firstplant.data.StaticConfig;
 
@@ -41,11 +39,13 @@ public class Setting extends Fragment {
     List<String> stringlist;
     ArrayAdapter<String> adapter;
     private String username;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_setting, container, false);
@@ -115,7 +115,7 @@ public class Setting extends Fragment {
                                     editor.putString("IDC", value);
                                     editor.commit();
                                     Tset.setText(getResources().getString(R.string.Current_ID) + " : " + prefs.getString("IDC", ""));
-                                    Tfarm.setText(getResources().getString(R.string.Current_Farm)+ " : " + prefs.getString("Farm", ""));
+                                    Tfarm.setText(getResources().getString(R.string.Current_Farm) + " : " + prefs.getString("Farm", ""));
                                     dialog.dismiss();
                                 }
 
@@ -221,14 +221,7 @@ public class Setting extends Fragment {
 
             @Override
             public void onClick(View view) {
-                /*Configuration config = new Configuration();
-                //config.locale = new Locale("th");
-                config.locale = Locale.ENGLISH;
-                getResources().updateConfiguration(config, null);
-                onCreate(null);
-*/
-
-               View dView = getActivity().getLayoutInflater().inflate(R.layout.activity_dialog, null);
+                View dView = getActivity().getLayoutInflater().inflate(R.layout.activity_dialog, null);
                 final EditText farmname = (EditText) dView.findViewById(R.id.farmname);
                 final EditText controller = (EditText) dView.findViewById(R.id.controller);
                 myRef = FirebaseDatabase.getInstance().getReference("users").child(username);
@@ -272,6 +265,7 @@ public class Setting extends Fragment {
         });
         return view;
     }
+
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         MenuItem item = menu.findItem(R.id.action_select);

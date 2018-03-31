@@ -71,9 +71,10 @@
     <string name="ChooseFarm">Choose a Farm...</string>
     <string name="AddFarm">Add Farm</string>
     <string name="Farmname">Farm Name</string>
-    <string name="Current_Farm">Current Farm</string>
+    <string name="Current_Farm">Farm Name</string>
     <string name="Controller_ID">Controller ID</string>
     <string name="Edit">Edit</string>
     <string name="Farm">Farm Name</string>
+    <string name="Language">Change Language</string>
 
 </resources>
