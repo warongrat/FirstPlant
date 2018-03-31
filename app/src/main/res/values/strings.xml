@@ -76,5 +76,7 @@
     <string name="Edit">Edit</string>
     <string name="Farm">Farm Name</string>
     <string name="Language">Change Language</string>
+    <string name="Title">Fertilizer and Irrigation Control</string>
+    <string name="Content">an application for fertilization and irrigation control with information of weather and growth conditions.</string>
 
 </resources>

@@ -18,7 +18,7 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/logo"
         android:layout_marginTop="23dp"
-        android:text="Fertilizer and Irrigation Control"
+        android:text="@string/Title"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="24sp"
@@ -62,7 +62,7 @@
         android:layout_below="@+id/textView"
 
         android:layout_marginTop="22dp"
-        android:text="an application for fertilization and irrigation control with information of weather and growth conditions."
+        android:text="@string/Content"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="18sp" />
