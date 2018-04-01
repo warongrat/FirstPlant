@@ -41,8 +41,8 @@
     <string name="Change_ID">เปลี่ยนไอดี</string>
     <string name="Reset">รีเซต</string>
     <string name="Current_ID">ไอดีปัจจุบัน</string>
-    <string name="Set1">รอบที่เช้า</string>
-    <string name="Set2">รอบที่เย็น</string>
+    <string name="Set1">รอบเช้า</string>
+    <string name="Set2">รอบเย็น</string>
     <string name="Yes">ใช่</string>
     <string name="No">ไม่ใช่</string>
     <string name="Select">เลือก</string>

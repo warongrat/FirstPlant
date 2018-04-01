@@ -41,8 +41,8 @@
     <string name="Reset">Reset</string>
     <string name="Change_ID">Change ID</string>
     <string name="Current_ID">Current ID</string>
-    <string name="Set1">Set time 1</string>
-    <string name="Set2">Set time 2</string>
+    <string name="Set1">Set morning</string>
+    <string name="Set2">Set evening</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
 

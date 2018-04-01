@@ -86,7 +86,8 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".get_start"></activity>
+        <activity android:name=".get_start" />
+        <activity android:name=".activity_language"></activity>
     </application>
 
 </manifest>

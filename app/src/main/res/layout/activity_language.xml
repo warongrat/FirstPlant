@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="project.firstplant.activity_language">
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="551dp"
+        android:background="@color/grey_50"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <ImageView
+            android:id="@+id/thai"
+            android:layout_width="352dp"
+            android:layout_height="154dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="82dp"
+            app:srcCompat="@drawable/th"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="100dp" />
+
+        <ImageView
+            android:id="@+id/eng"
+            android:layout_width="242dp"
+            android:layout_height="152dp"
+            android:layout_below="@+id/thai"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            app:srcCompat="@drawable/en"
+            tools:layout_editor_absoluteX="71dp"
+            tools:layout_editor_absoluteY="322dp" />
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

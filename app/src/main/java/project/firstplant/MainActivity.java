@@ -178,19 +178,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }*/
         if (id == R.id.action_lan) {
-            Locale current = getResources().getConfiguration().locale;
-            Configuration config = new Configuration();
-            if (current.equals(new Locale("th")))
-                config.locale = Locale.ENGLISH;
-            else
-                config.locale = new Locale("th");
-            getResources().updateConfiguration(config, null);
-            FragmentManager fm = getSupportFragmentManager();
-            for (int i = 0; i < fm.getBackStackEntryCount(); ++i) {
-                fm.popBackStack();
-            }
-            finish();
-            startActivity(getIntent());
+            fragment = new activity_language();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.replace(R.id.mainFrame, fragment).commit();
+            return true;
         }
         if (id == R.id.action_signout) {
             AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
