@@ -86,16 +86,15 @@ public class UserProfileFragment extends Fragment {
     private ValueEventListener userListener = new ValueEventListener() {
         @Override
         public void onDataChange(DataSnapshot dataSnapshot) {
-            //Lấy thông tin của user về và cập nhật lên giao diện
             listConfig.clear();
             myAccount = dataSnapshot.getValue(User.class);
 
             setupArrayListInfo(myAccount);
-            if(infoAdapter != null){
+            if (infoAdapter != null) {
                 infoAdapter.notifyDataSetChanged();
             }
 
-            if(tvUserName != null){
+            if (tvUserName != null) {
                 tvUserName.setText(myAccount.name);
             }
 
@@ -106,7 +105,6 @@ public class UserProfileFragment extends Fragment {
 
         @Override
         public void onCancelled(DatabaseError databaseError) {
-            //Có lỗi xảy ra, không lấy đc dữ liệu
             Log.e(UserProfileFragment.class.getName(), "loadPost:onCancelled", databaseError.toException());
         }
     };
@@ -123,7 +121,7 @@ public class UserProfileFragment extends Fragment {
         context = view.getContext();
         avatar = (ImageView) view.findViewById(R.id.img_avatar);
         avatar.setOnClickListener(onAvatarClick);
-        tvUserName = (TextView)view.findViewById(R.id.tv_username);
+        tvUserName = (TextView) view.findViewById(R.id.tv_username);
 
         SharedPreferenceHelper prefHelper = SharedPreferenceHelper.getInstance(context);
         myAccount = prefHelper.getUserInfo();
@@ -131,7 +129,7 @@ public class UserProfileFragment extends Fragment {
         setImageAvatar(context, myAccount.avata);
         tvUserName.setText(myAccount.name);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.info_recycler_view);
+        recyclerView = (RecyclerView) view.findViewById(R.id.info_recycler_view);
         infoAdapter = new UserInfoAdapter(listConfig);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
@@ -142,9 +140,6 @@ public class UserProfileFragment extends Fragment {
         return view;
     }
 
-    /**
-     * Khi click vào avatar thì bắn intent mở trình xem ảnh mặc định để chọn ảnh
-     */
     private View.OnClickListener onAvatarClick = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -176,7 +171,6 @@ public class UserProfileFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             if (data == null) {
-                Toast.makeText(context, "Có lỗi xảy ra, vui lòng thử lại", Toast.LENGTH_LONG).show();
                 return;
             }
             try {
@@ -201,7 +195,7 @@ public class UserProfileFragment extends Fragment {
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
 
                                     waitingDialog.dismiss();
                                     SharedPreferenceHelper preferenceHelper = SharedPreferenceHelper.getInstance(context);
@@ -215,7 +209,7 @@ public class UserProfileFragment extends Fragment {
                                             .show();
                                 }
                             }
-                         })
+                        })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
@@ -234,11 +228,7 @@ public class UserProfileFragment extends Fragment {
         }
     }
 
-    /**
-     * Xóa list cũ và cập nhật lại list data mới
-     * @param myAccount
-     */
-    public void setupArrayListInfo(User myAccount){
+    public void setupArrayListInfo(User myAccount) {
         listConfig.clear();
         Configuration userNameConfig = new Configuration(USERNAME_LABEL, myAccount.name, R.mipmap.ic_account_box);
         listConfig.add(userNameConfig);
@@ -253,10 +243,9 @@ public class UserProfileFragment extends Fragment {
         listConfig.add(signout);
     }
 
-    private void setImageAvatar(Context context, String imgBase64){
+    private void setImageAvatar(Context context, String imgBase64) {
         try {
             Resources res = getResources();
-            //Nếu chưa có avatar thì để hình mặc định
             Bitmap src;
             if (imgBase64.equals("default")) {
                 src = BitmapFactory.decodeResource(res, R.drawable.default_avata);
@@ -266,24 +255,24 @@ public class UserProfileFragment extends Fragment {
             }
 
             avatar.setImageDrawable(ImageUtils.roundedImage(context, src));
-        }catch (Exception e){
+        } catch (Exception e) {
         }
     }
 
     @Override
-    public void onDestroyView (){
+    public void onDestroyView() {
         super.onDestroyView();
     }
 
     @Override
-    public void onDestroy (){
+    public void onDestroy() {
         super.onDestroy();
     }
 
-    public class UserInfoAdapter extends RecyclerView.Adapter<UserInfoAdapter.ViewHolder>{
+    public class UserInfoAdapter extends RecyclerView.Adapter<UserInfoAdapter.ViewHolder> {
         private List<Configuration> profileConfig;
 
-        public UserInfoAdapter(List<Configuration> profileConfig){
+        public UserInfoAdapter(List<Configuration> profileConfig) {
             this.profileConfig = profileConfig;
         }
 
@@ -300,10 +289,10 @@ public class UserProfileFragment extends Fragment {
             holder.label.setText(config.getLabel());
             holder.value.setText(config.getValue());
             holder.icon.setImageResource(config.getIcon());
-            ((RelativeLayout)holder.label.getParent()).setOnClickListener(new View.OnClickListener() {
+            ((RelativeLayout) holder.label.getParent()).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(config.getLabel().equals(SIGNOUT_LABEL)){
+                    if (config.getLabel().equals(SIGNOUT_LABEL)) {
                         FirebaseAuth.getInstance().signOut();
                         FriendDB.getInstance(getContext()).dropDB();
                         GroupDB.getInstance(getContext()).dropDB();
@@ -311,10 +300,10 @@ public class UserProfileFragment extends Fragment {
                         getActivity().finish();
                     }
 
-                    if(config.getLabel().equals(USERNAME_LABEL)){
+                    if (config.getLabel().equals(USERNAME_LABEL)) {
                         View vewInflater = LayoutInflater.from(context)
-                                .inflate(R.layout.dialog_edit_username,  (ViewGroup) getView(), false);
-                        final EditText input = (EditText)vewInflater.findViewById(R.id.edit_username);
+                                .inflate(R.layout.dialog_edit_username, (ViewGroup) getView(), false);
+                        final EditText input = (EditText) vewInflater.findViewById(R.id.edit_username);
                         input.setText(myAccount.name);
                         /*Hiển thị dialog với dEitText cho phép người dùng nhập username mới*/
                         new AlertDialog.Builder(context)
@@ -324,7 +313,7 @@ public class UserProfileFragment extends Fragment {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         String newName = input.getText().toString();
-                                        if(!myAccount.name.equals(newName)){
+                                        if (!myAccount.name.equals(newName)) {
                                             changeUserName(newName);
                                         }
                                         dialogInterface.dismiss();
@@ -338,7 +327,7 @@ public class UserProfileFragment extends Fragment {
                                 }).show();
                     }
 
-                    if(config.getLabel().equals(RESETPASS_LABEL)){
+                    if (config.getLabel().equals(RESETPASS_LABEL)) {
                         new AlertDialog.Builder(context)
                                 .setTitle("Password")
                                 .setMessage("Are you sure want to reset password?")
@@ -359,11 +348,8 @@ public class UserProfileFragment extends Fragment {
                 }
             });
         }
-
-        /**
-         * Cập nhật username mới vào SharedPreference và thay đổi trên giao diện
-         */
-        private void changeUserName(String newName){
+        
+        private void changeUserName(String newName) {
             userDB.child("name").setValue(newName);
 
 
@@ -434,11 +420,12 @@ public class UserProfileFragment extends Fragment {
             // each data item is just a string in this case
             public TextView label, value;
             public ImageView icon;
+
             public ViewHolder(View view) {
                 super(view);
-                label = (TextView)view.findViewById(R.id.tv_title);
-                value = (TextView)view.findViewById(R.id.tv_detail);
-                icon = (ImageView)view.findViewById(R.id.img_icon);
+                label = (TextView) view.findViewById(R.id.tv_title);
+                value = (TextView) view.findViewById(R.id.tv_detail);
+                icon = (ImageView) view.findViewById(R.id.img_icon);
             }
         }
 

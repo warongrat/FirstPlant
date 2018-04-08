@@ -64,7 +64,7 @@ public class weatherFragment extends Fragment {
                                                 wIcon.setImageResource(R.drawable.cloudy);
                                                 textViewTitle.setText(R.string.Cloudy);
                                             }
-                                            textViewResult.setText(getResources().getString(R.string.Temp) + " : " + temp + "\n" + getResources().getString(R.string.Hump) + " : " + hum + "\n" + getResources().getString(R.string.Heat) + " : " + heat);
+                                            textViewResult.setText(getResources().getString(R.string.Temp) + " : " + temp + " °C" + "\n" + getResources().getString(R.string.Hump) + " : " + hum + " %" + "\n" + getResources().getString(R.string.Heat) + " : " + heat + " °C");
                                         }
 
                                         @Override

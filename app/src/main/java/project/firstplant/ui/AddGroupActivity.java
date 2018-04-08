@@ -325,7 +325,7 @@ class ListPeopleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         if (!avata.equals(StaticConfig.STR_DEFAULT_BASE64)) {
             byte[] decodedString = Base64.decode(avata, Base64.DEFAULT);
             ((ItemFriendHolder) holder).avata.setImageBitmap(BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length));
-        }else{
+        } else {
             ((ItemFriendHolder) holder).avata.setImageBitmap(BitmapFactory.decodeResource(context.getResources(), R.drawable.default_avata));
         }
         ((ItemFriendHolder) holder).checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -347,7 +347,7 @@ class ListPeopleAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         });
         if (isEdit && editGroup.member.contains(id)) {
             ((ItemFriendHolder) holder).checkBox.setChecked(true);
-        }else if(editGroup != null && !editGroup.member.contains(id)){
+        } else if (editGroup != null && !editGroup.member.contains(id)) {
             ((ItemFriendHolder) holder).checkBox.setChecked(false);
         }
     }
